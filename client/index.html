@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="google-signin-client_id"
+    content="721214027769-9nkf9lnt121m8bqne51rmn56klrj14nm.apps.googleusercontent.com">
+  <title>RamTodo</title>
+  <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+          
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+</head>
+<body>
+  <div id="welcome_page" class="container">
+    <div class="container">
+      <div class="container">
+        
+        <div id="register_page" class="row" style="margin-top:7vh">
+          <div class="col s12">
+            <div class="card white darken-1">
+              <div class="card-content black-text">
+                <span class="card-title">Register</span>
+                <div class="row">
+                  <form id="register_form" class="col s12">
+                    <div class="row">
+                      <div class="input-field col s12">
+                        <input id="register_full_name" type="text" class="validate" required>
+                        <label for="register_full_name">Full Name</label>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="input-field col s12">
+                        <input id="register_email" type="email" class="validate" required>
+                        <label for="register_email">Email</label>
+                        <span class="helper-text" data-error="invalid" data-success="valid">We'll never share your email with anyone else.</span>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="input-field col s12">
+                        <input id="register_password" type="password" class="validate" required>
+                        <label for="register_password">Password</label>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="input-field col s7">
+                        <a onClick="moveLogin()" href="#">Already registered?</a>
+                      </div>
+                      <div class="input-field col s5">
+                        <button class="btn green waves-effect waves-light" type="submit" name="action">Submit
+                          <i class="material-icons right">send</i>
+                        </button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="oauth_page" class="row" style="margin-top:20vh">
+          <div class="col s12">
+            <div class="card white darken-1">
+              <div class="card-content black-text">
+                <span class="card-title">One last step</span>
+                <div class="row">
+                  <form id="oauth_form" class="col s12">
+                    <div class="row">
+                      <div class="input-field col s12">
+                        <input id="oauth_password" type="password" class="validate" required>
+                        <label for="oauth_password">Password</label>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="input-field col s5 offset-s7">
+                        <button class="btn green waves-effect waves-light" type="submit" name="action">Submit
+                          <i class="material-icons right">send</i>
+                        </button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="login_page" class="row" style="margin-top:12vh">
+          <div class="col s12">
+            <div class="card white darken-1">
+              <div class="card-content black-text">
+                <span class="card-title">Login</span>
+                <div class="row">
+                  <form id="login_form" class="col s12">
+                    <div class="row">
+                      <div class="input-field col s12">
+                        <input id="login_email" type="email" class="validate" required>
+                        <label for="login_email">Email</label>
+                        <span class="helper-text" data-error="invalid" data-success="valid">We'll never share your email with anyone else.</span>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="input-field col s12">
+                        <input id="login_password" type="password" class="validate" required>
+                        <label for="login_password">Password</label>
+                        <a onClick="moveRegister()" href="#">Dont't have an account?</a>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="input-field col s5 offset-s2">
+                        <div class="g-signin2" data-onsuccess="onSignIn"></div>
+                      </div>
+                      <div class="input-field col s5">
+                        <button class="btn green waves-effect waves-light" type="submit" name="action">Login
+                          <i class="material-icons right">send</i>
+                        </button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>  
+
+  <div id="app">
+    <nav class="green">
+      <div class="nav-wrapper">
+        <a href="#" class="brand-logo center"><i class="material-icons">assignment</i> RamTodo</a>
+        <ul id="nav-mobile" class="left hide-on-med-and-down">
+          <li>
+            <form>
+              <div class="input-field inline">
+                <input id="search" type="search" required>
+                <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+                <i class="material-icons">close</i>
+              </div>
+            </form>
+          </li>
+        </ul>
+        <ul class="right hide-on-med-and-down">
+          <li id="welcome_user" style="margin-right:10px"></li>
+          <li><a href="#">My Todos</a></li>
+          <li><a href="#">My Projects</a></li>
+          <li><a href="#" onclick="signOut()"><i class="material-icons">exit_to_app</i></a></li>
+        </ul>
+      </di>
+    </nav>
+  
+    <div style="height:90vh;background:grey">
+  
+    </div>
+  </div>
+  <!-- Compiled and minified JavaScript -->
+  <script src="http://code.jquery.com/jquery-3.3.1.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+  <script src="js/authentication.js"></script>
+</body>
+</html>

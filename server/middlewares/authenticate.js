@@ -17,6 +17,7 @@ module.exports = (req, res, next) => {
             }
             next(err);
           } else {
+            req.decoded = decoded;
             next();
           }
         })
@@ -30,9 +31,8 @@ module.exports = (req, res, next) => {
     }
   } else {
     const err = {
-      error,
       status: 400,
-      message: 'not token assigned'
+      message: 'no token assigned'
     }
     next(err);
   }

@@ -53,15 +53,10 @@ class Controller {
   }
 
   static glogin(req, res, next) {
-    const { id_token } = req.headers;
-    let getPayload = null;
-    gverify(id_token)
-      .then(ticket => {
-        getPayload = ticket.getPayload();
-        return User.findOne({
-          email: getPayload.email
-        })
-      })
+    const { getPayload } = req;
+    User.findOne({
+      email: getPayload.email
+    })
       .then(user => {
         if(!user) {
           const register_token = jwt.sign({

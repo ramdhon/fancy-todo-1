@@ -7,7 +7,11 @@ class Controller {
     if (search) {
       obj.name = search;
     }
-    Todo.find(obj)
+    Todo.find(obj, [], {
+      sort:{
+          created: -1
+      }
+    })
       .populate({
         path: 'creator',
         select: ['_id', 'name', 'email']
@@ -39,7 +43,11 @@ class Controller {
     if (search) {
       obj.name = search;
     }
-    Todo.find(obj)
+    Todo.find(obj, [], {
+      sort:{
+          created: -1
+      }
+    })
       .populate({
         path: 'creator',
         select: ['_id', 'name', 'email']

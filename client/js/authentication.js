@@ -37,6 +37,7 @@ function onSignIn(googleUser) {
         })
       }
       localStorage.setItem('token', token);
+      fetchTodos('auth');
       logCheck(user);
     })
     .fail((jqXHR, textStatus) => {
@@ -86,6 +87,7 @@ function onRegister() {
         })
       }
       localStorage.setItem('token', token);
+      fetchTodos('auth');
       $('#oauth_password').val('');
       logCheck(user);
     })
@@ -181,6 +183,7 @@ function login() {
       }
       localStorage.setItem('token', token);
       localStorage.setItem('user', user);
+      fetchTodos('auth');
       $('#login_email').val('');
       $('#login_password').val('');
       logCheck(user);

@@ -134,18 +134,14 @@
     <nav class="green">
       <div class="nav-wrapper">
         <a href="#" class="brand-logo center"><i class="material-icons">assignment</i> RamTodo</a>
-        <ul id="nav-mobile" class="left hide-on-med-and-down">
-          <li>
-            <form>
-              <div class="input-field inline">
-                <input id="search" type="search" required>
-                <label class="label-icon" for="search"><i class="material-icons">search</i></label>
-                <i class="material-icons">close</i>
-              </div>
-            </form>
-          </li>
-        </ul>
-        <ul class="right hide-on-med-and-down">
+        <form style="width:30%" class="left hide-on-med-and-down">
+          <div class="input-field">
+            <input id="search" type="search" required>
+            <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+            <i class="material-icons">close</i>
+          </div>
+        </form>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
           <li id="welcome_user" style="margin-right:10px"></li>
           <li><a href="#">My Todos</a></li>
           <li><a href="#">My Projects</a></li>
@@ -154,8 +150,130 @@
       </di>
     </nav>
   
-    <div style="height:90vh;background:grey">
+    <div style="height:90vh;background:grey;overflow:auto;">
+      <div style="margin-top:5vh" class="container">
+        <div class="row">
+          <div class="col s1 offset-s11">
+            <a class="btn-floating btn-large waves-effect waves-light green modal-trigger" href="#modal1"><i class="material-icons">create</i></a>
+          </div>
+        </div>
+
+        <div id="modal1" class="modal">
+          <div class="modal-content">
+            <h4>Modal Header</h4>
+            <p>A bunch of text</p>
+          </div>
+          <div class="modal-footer">
+            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+          </div>
+        </div>
   
+        <div class="row">
+          <div class="col s4">
+            <div class="card sticky-action">
+              <div style="object-fit:cover;height:40vh" class="card-image waves-effect waves-block waves-light">
+                <img class="activator" src="https://images.pexels.com/photos/2216613/pexels-photo-2216613.jpeg">
+              </div>
+              <div class="card-content">
+                <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right">expand_less</i></span>
+                <p><a href="#">This is a link</a></p>
+              </div>
+              <div class="card-action">
+                <div class="row">
+                  <div class="col s6">
+                    <a class="red waves-effect waves-light btn"><i class="material-icons left">delete</i>del</a>
+                  </div>
+                  <div class="col s6">
+                    <a class="blue waves-effect waves-light btn"><i class="material-icons left">edit</i>edit</a>
+                  </div>
+                </div>
+              </div>
+              <div class="card-reveal">
+                <span class="card-title grey-text text-darken-4">Card Title Desc<i class="material-icons right">close</i></span>
+                <p>Here is some more information about this product that is only revealed once clicked on.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col s4">
+            <div class="card sticky-action">
+              <div style="object-fit:cover;height:40vh" class="card-image waves-effect waves-block waves-light">
+                <img class="activator" src="https://images.pexels.com/photos/2216613/pexels-photo-2216613.jpeg">
+              </div>
+              <div class="card-content">
+                <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right">expand_less</i></span>
+                <p><a href="#">This is a link</a></p>
+              </div>
+              <div class="card-action">
+                <div class="row">
+                  <div class="col s6">
+                    <a class="red waves-effect waves-light btn"><i class="material-icons left">delete</i>del</a>
+                  </div>
+                  <div class="col s6">
+                    <a class="blue waves-effect waves-light btn"><i class="material-icons left">edit</i>edit</a>
+                  </div>
+                </div>
+              </div>
+              <div class="card-reveal">
+                <span class="card-title grey-text text-darken-4">Card Title Desc<i class="material-icons right">close</i></span>
+                <p>Here is some more information about this product that is only revealed once clicked on.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col s4">
+            <div class="card sticky-action">
+              <div style="object-fit:cover;height:40vh" class="card-image waves-effect waves-block waves-light">
+                <img class="activator" src="https://images.pexels.com/photos/2216613/pexels-photo-2216613.jpeg">
+              </div>
+              <div class="card-content">
+                <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right">expand_less</i></span>
+                <p><a href="#">This is a link</a></p>
+              </div>
+              <div class="card-action">
+                <div class="row">
+                  <div class="col s6">
+                    <a class="red waves-effect waves-light btn"><i class="material-icons left">delete</i>del</a>
+                  </div>
+                  <div class="col s6">
+                    <a class="blue waves-effect waves-light btn"><i class="material-icons left">edit</i>edit</a>
+                  </div>
+                </div>
+              </div>
+              <div class="card-reveal">
+                <span class="card-title grey-text text-darken-4">Card Title Desc<i class="material-icons right">close</i></span>
+                <p>Here is some more information about this product that is only revealed once clicked on.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col s4">
+            <div class="card sticky-action">
+              <div style="object-fit:cover;height:40vh" class="card-image waves-effect waves-block waves-light">
+                <img class="activator" src="https://images.pexels.com/photos/2216613/pexels-photo-2216613.jpeg">
+              </div>
+              <div class="card-content">
+                <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right">expand_less</i></span>
+                <p><a href="#">This is a link</a></p>
+              </div>
+              <div class="card-action">
+                <div class="row">
+                  <div class="col s6">
+                    <a class="red waves-effect waves-light btn"><i class="material-icons left">delete</i>del</a>
+                  </div>
+                  <div class="col s6">
+                    <a class="blue waves-effect waves-light btn"><i class="material-icons left">edit</i>edit</a>
+                  </div>
+                </div>
+              </div>
+              <div class="card-reveal">
+                <span class="card-title grey-text text-darken-4">Card Title Desc<i class="material-icons right">close</i></span>
+                <p>Here is some more information about this product that is only revealed once clicked on.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
   <!-- Compiled and minified JavaScript -->
@@ -165,6 +283,7 @@
     integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
     crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script src="js/materialize.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
   <script src="js/authentication.js"></script>
 </body>

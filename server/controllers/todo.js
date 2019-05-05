@@ -132,7 +132,7 @@ class Controller {
     const { name, description, dueDate, status } = req.body
     let { todo } = req;
     todo.name = name || todo.name;
-    todo.description = description || todo.name;
+    todo.description = description || todo.description;
     todo.dueDate = dueDate || todo.dueDate;
     todo.status = status || todo.status;
     todo.updated = new Date();

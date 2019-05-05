@@ -66,7 +66,9 @@ class Controller {
     Todo.create({
       name, description, dueDate,
       status: 0,
-      creator: decoded.id
+      creator: decoded.id,
+      created: new Date(),
+      updated: new Date()
     })
       .then(newTodo => {
         res.status(201).json({ message: 'data created', newTodo });
@@ -106,8 +108,9 @@ class Controller {
     updatedTodo.description = description;
     updatedTodo.dueDate = dueDate;
     updatedTodo.status = status;
+    updatedTodo.updated = new Date();
     updatedTodo.updateOne({
-      name, description, dueDate, status
+      name, description, dueDate, status, updated: updatedTodo.updated
     })
       .then(info => {
         res.status(201).json({ message: 'data updated', updatedTodo, info });
@@ -124,6 +127,7 @@ class Controller {
     todo.description = description || todo.name;
     todo.dueDate = dueDate || todo.dueDate;
     todo.status = status || todo.status;
+    todo.updated = new Date();
     todo.save()
       .then(updatedTodo => {
         res.status(201).json({ message: 'data updated', updatedTodo });

@@ -13,6 +13,8 @@ const todoSchema = new Schema({
     type: Date,
     required: [true, 'required']
   },
+  created: Date,
+  updated: Date,
   creator: {
     type: Schema.Types.ObjectId,
     ref: 'User'

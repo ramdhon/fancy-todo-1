@@ -50,10 +50,10 @@ function createTodo() {
             <p>${newTodo.description}</p>
             <div class="row">
               <div class="col s6">
-                <a onClick="deleteTodo('${newTodo._id}', '${countCreate}')" class="red waves-effect waves-light btn"><i class="material-icons left">delete</i>del</a>
+                <a onClick="deleteTodo('${newTodo._id}')" class="red waves-effect waves-light btn"><i class="material-icons left">delete</i>del</a>
               </div>
               <div class="col s6">
-                <a class="blue waves-effect waves-light btn"><i class="material-icons left">edit</i>edit</a>
+                <a href="#modal2" onClick="fetchOne('${newTodo._id}'{, '${countCreate}')" class="blue waves-effect waves-light btn modal-trigger"><i class="material-icons left">edit</i>edit</a>
               </div>
             </div>
           </div>
@@ -78,7 +78,123 @@ function createTodo() {
     })
 }
 
-function deleteTodo(id, index) {
+function fetchOne(id, index) {
+  const { token } = localStorage;
+  $('#edit_todo_btn').remove();
+  $('#edit_btn').append(`
+  <a href="#" id="edit_todo_btn" onClick="editTodo('${id}', '${index}')" class="modal-close waves-effect waves-green btn-flat">Edit
+    <i class="material-icons right">send</i>
+  </a>
+  `);
+  $.ajax({
+    url: `${serverURL}/todos/${id}`,
+    method: 'GET',
+    headers: {
+      token
+    },
+  })
+    .done((response) => {
+      const { todo } = response;
+      $('#edit_todo_name').val(todo.name);
+      $('#edit_todo_description').val(todo.description);
+      $('#edit_todo_dueDate').val(todo.dueDate.slice(0, 10));
+    })
+    .fail((jqXHR, textStatus) => {
+      const { responseJSON, status } = jqXHR;
+      const { message } = responseJSON;
+      console.log('request failed =>', textStatus);
+      Swal.fire({
+        position: 'center',
+        type: 'error',
+        title: `${message} (${status})`,
+        showConfirmButton: false,
+        timer: 1500
+      })
+    })
+}
+
+function editTodo(id, index) {
+  const { token } = localStorage;
+  const name = $('#edit_todo_name').val();
+  const description = $('#edit_todo_description').val();
+  const dueDate = $('#edit_todo_dueDate').val();
+
+  $.ajax({
+    url: `${serverURL}/todos/${id}`,
+    method: 'PATCH',
+    headers: {
+      token
+    },
+    data: {
+      name, description, dueDate
+    }
+  })
+    .done((response) => {
+      const { message, updatedTodo } = response;
+      Swal.fire({
+        position: 'center',
+        type: 'success',
+        title: message,
+        showConfirmButton: false,
+        timer: 1500
+      })
+      $(`#list${index}`).remove();
+      $('#todo_list').prepend(`
+      <div id="list${index}" class="col s4">
+        <div class="card sticky-action">
+          <div class="card-image waves-effect waves-block waves-light">
+            <img style="object-fit:cover;height:40vh;" class="activator" src="${images[Math.round(Math.random()*(images.length - 1))]}">
+          </div>
+          <div class="card-content">
+            <span class="card-title activator grey-text text-darken-4">${updatedTodo.name}<i class="material-icons right">expand_less</i></span>
+            <p style="margin-bottom:1vh"><span class="grey-text">by: ${updatedTodo.creator.name}</span></p>
+            <p style="margin-bottom:2vh"><span class="orange-text badge">in 4 days</span></p>
+          </div>
+          <div class="card-action">
+            <p id="todo${index}">
+
+            </p>
+          </div>
+          <div class="card-reveal">
+            <span class="card-title grey-text text-darken-4">Description<i class="material-icons right">close</i></span>
+            <p>${updatedTodo.description}</p>
+            <div class="row">
+              <div class="col s6">
+                <a onClick="deleteTodo('${updatedTodo._id}')" class="red waves-effect waves-light btn"><i class="material-icons left">delete</i>del</a>
+              </div>
+              <div class="col s6">
+                <a href="#modal2" onClick="fetchOne('${updatedTodo._id}', '${index}')" class="blue waves-effect waves-light btn modal-trigger"><i class="material-icons left">edit</i>edit</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      `)    
+      if (!updatedTodo.status) {
+        $(`#todo${index}`).append(`
+        <a onClick="completeToggle('${updatedTodo._id}', '${index}', 1)" class="red waves-effect waves-light btn"><i class="material-icons left">close</i>uncompleted</a>
+        `)
+      } else {
+        $(`#todo${index}`).append(`
+        <a onClick="completeToggle('${updatedTodo._id}', '${index}', 0)"class="green waves-effect waves-light btn"><i class="material-icons left">check</i>completed</a>
+        `)
+      }      
+    })
+    .fail((jqXHR, textStatus) => {
+      const { responseJSON, status } = jqXHR;
+      const { message } = responseJSON;
+      console.log('request failed =>', textStatus);
+      Swal.fire({
+        position: 'center',
+        type: 'error',
+        title: `${message} (${status})`,
+        showConfirmButton: false,
+        timer: 1500
+      })
+    })
+}
+
+function deleteTodo(id) {
   const { token } = localStorage;  
   const swalWithBootstrapButtons = Swal.mixin({
     customClass: {
@@ -178,10 +294,10 @@ function fetchTodos(user) {
               <p>${todo.description}</p>
               <div class="row">
                 <div class="col s6">
-                  <a onClick="deleteTodo('${todo._id}', '${i}')" class="red waves-effect waves-light btn"><i class="material-icons left">delete</i>del</a>
+                  <a onClick="deleteTodo('${todo._id}')" class="red waves-effect waves-light btn"><i class="material-icons left">delete</i>del</a>
                 </div>
                 <div class="col s6">
-                  <a class="blue waves-effect waves-light btn"><i class="material-icons left">edit</i>edit</a>
+                  <a href="#modal2" onClick="fetchOne('${todo._id}', '${i}')" class="blue waves-effect waves-light btn modal-trigger"><i class="material-icons left">edit</i>edit</a>
                 </div>
               </div>
             </div>

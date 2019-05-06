@@ -133,7 +133,7 @@
   <div id="app">
     <nav class="green">
       <div class="nav-wrapper">
-        <a href="#" class="brand-logo center"><i class="material-icons">assignment</i>RamTodo</a>
+        <a href="#" onClick="fetchTodos()" class="brand-logo center"><i class="material-icons">assignment</i>RamTodo</a>
         <form style="width:30%" class="left hide-on-med-and-down">
           <div class="input-field">
             <input id="search" type="search" required>
@@ -143,7 +143,7 @@
         </form>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
           <li id="welcome_user" style="margin-right:10px"></li>
-          <li><a href="#">My Todos</a></li>
+          <li><a href="#" onClick="fetchTodos('auth')">My Todos</a></li>
           <li><a href="#">My Projects</a></li>
           <li><a href="#" onclick="signOut()"><i class="material-icons">exit_to_app</i></a></li>
         </ul>
@@ -186,6 +186,35 @@
                 <button type="submit" name="action" class="modal-close waves-effect waves-green btn-flat">Submit
                   <i class="material-icons right">send</i>
                 </button>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <div id="modal2" class="modal">
+          <div class="modal-content">
+            <h4>Edit Todo</h4>
+            <form id="edit_todo_form" class="col s12">
+              <div class="row">
+                <div class="input-field col s12">
+                  <input id="edit_todo_name" type="text" class="validate" required>
+                  <label for="edit_todo_name">Name</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s12">
+                  <textarea id="edit_todo_description" class="materialize-textarea"></textarea>
+                  <label for="edit_todo_description">Description</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s12">
+                  <input id="edit_todo_dueDate" type="text" class="datepicker" required>
+                  <label for="edit_todo_dueDate">Deadline</label>
+                </div>
+              </div>
+              <div id="edit_btn" class="modal-footer">
+                
               </div>
             </form>
           </div>

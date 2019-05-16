@@ -404,12 +404,12 @@ Access the REST API via SERVER_URL = `http://api.ramtodo.ramdhon.net`
     - status: `401`:
       ```json
       {
-        "message": "unauthorized to access",
+        "message": "unauthorized to access"
       }
       ```
     - status: `404`:
       ```json
         {
-          "message": "data not found",
+          "message": "data not found"
         }
       ```

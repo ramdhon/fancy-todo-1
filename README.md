@@ -16,7 +16,7 @@ $ npm run dev
 Make sure you have set all required your .env parameters
 <br>(key reference: .env.example)
 
-Access the REST API via SERVER_URL = `http://localhost:3000/`
+Access the REST API via SERVER_URL = `http://api.ramtodo.ramdhon.net`
 
 ## REST API Routes:
 
@@ -116,7 +116,7 @@ Access the REST API via SERVER_URL = `http://localhost:3000/`
     - status: `400`:
       ```json
       {
-        "message": "<errorMessage>",
+        "message": "<errorMessage>"
       }
       ```
       Notes:
@@ -159,7 +159,7 @@ Access the REST API via SERVER_URL = `http://localhost:3000/`
     - status: `400`:
       ```json
         {
-          "message": "<authentication message>",
+          "message": "<authentication message>"
         }
       ```
       Notes:
@@ -207,7 +207,7 @@ Access the REST API via SERVER_URL = `http://localhost:3000/`
     - status: `400`:
       ```json
         {
-          "message": "<authentication message>",
+          "message": "<authentication message>"
         }
       ```
       Notes:
@@ -219,7 +219,7 @@ Access the REST API via SERVER_URL = `http://localhost:3000/`
     - status: `404`:
       ```json
         {
-          "message": "data empty",
+          "message": "data empty"
         }
       ```
   
@@ -254,7 +254,7 @@ Access the REST API via SERVER_URL = `http://localhost:3000/`
     - status: `400`:
       ```json
       {
-        "message": "<authentication message>",
+        "message": "<authentication message>"
       }
       ```
       Notes:
@@ -262,7 +262,7 @@ Access the REST API via SERVER_URL = `http://localhost:3000/`
         - no token assigned
         - not allowed to access
         - not recognized input data
-      - ERROR `400` is caused by entering *empty title* or *empty dueDate*
+      - ERROR `400` is also Validation Error caused by entering *empty title* or *empty dueDate*
     
 - **GET TODO BY ID**
   - URL:
@@ -302,11 +302,11 @@ Access the REST API via SERVER_URL = `http://localhost:3000/`
     - status: `404`:
       ```json
         {
-          "message": "data not found",
+          "message": "data not found"
         }
       ```
 
-- **UPDATE USER BY ID**
+- **UPDATE TODO BY ID**
   - Notes:
     - Authorization: only authenticated user's todo can be accessed
   - URL(s):
@@ -343,7 +343,7 @@ Access the REST API via SERVER_URL = `http://localhost:3000/`
     - status: `400`:
       ```json
       {
-        "message": "<authentication message>",
+        "message": "<authentication message>"
       }
       ```
       Notes:
@@ -351,6 +351,7 @@ Access the REST API via SERVER_URL = `http://localhost:3000/`
         - no token assigned
         - not allowed to access
         - not recognized input data
+      - ERROR `400` is also Validation Error caused by entering *empty title* or *empty dueDate*
     - status: `401`:
       ```json
       {
@@ -364,7 +365,7 @@ Access the REST API via SERVER_URL = `http://localhost:3000/`
         }
       ```
 
-- **DELETE USER BY ID**
+- **DELETE TODO BY ID**
   - Notes:
     - Authorization: only authenticated user's todo can be accessed
   - URL(s):
@@ -392,7 +393,7 @@ Access the REST API via SERVER_URL = `http://localhost:3000/`
     - status: `400`:
       ```json
       {
-        "message": "<authentication message>",
+        "message": "<authentication message>"
       }
       ```
       Notes:
